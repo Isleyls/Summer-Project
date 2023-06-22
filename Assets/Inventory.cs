@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using World;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    public List<Item> items = new List<Item>();
+    [SerializeField] public List<Item> items = new List<Item>();
 
     void Start()
     {
@@ -29,15 +30,17 @@ public class Inventory : MonoBehaviour
             {
                 item.count += item2add.count;
                 itemExists = true;
-                Debug.Log(item2add.name + " was added.");
+                Debug.Log(item2add.name + " was added. You now have " + item.count + " " + item2add.name + "s!");
                 break;
             }
         }
 
         if (!itemExists)
         {
+            
             items.Add(item2add);
             Debug.Log(item2add.name + " was added.");
         }
+        World.WorldCreation.player.InventoryUpdate(items);
     }
 }

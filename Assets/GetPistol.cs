@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetMoney : MonoBehaviour
+public class GetPistol : MonoBehaviour
 {
-    public Item money = new Item("money", 1);
+    public Weapon pistol = new Weapon("pistol", 1, 10, 100, 12);
 
     public bool PickUpEnabled;
 
@@ -26,14 +25,14 @@ public class GetMoney : MonoBehaviour
     {
        if (c2d.gameObject.name.Equals("Player"))
        {
-            Debug.Log("Stepped on that mula baby!!");
+            Debug.Log("Found a blicky!!");
             PickUpEnabled = true;
        }
     }
 
     void PickUp()
     {
-        Inventory.instance.addItems(money);
+        Inventory.instance.addItems(pistol);
         Destroy(gameObject);
     }
 }
