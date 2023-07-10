@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetPistol : MonoBehaviour
+public class getMagnum : MonoBehaviour
 {
-    public Weapon pistol = new Weapon("pistol", 1, 10, 100, 12, 5, "Semi-Automatic", "9mm");
+    // Start is called before the first frame update
+    public Weapon pistol = new Weapon("magnum", 1, 30, 100, 6, 3, "Semi-Automatic", "357Mag");
 
     public bool PickUpEnabled;
 
@@ -20,7 +21,7 @@ public class GetPistol : MonoBehaviour
     {
        if (c2d.gameObject.name.Equals("Player"))
        {
-            Debug.Log("Found a Pistol!");
+            Debug.Log("Big Iron, Big Iron...");
             PickUpEnabled = true;
        }
     }

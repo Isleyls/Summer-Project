@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetPistol : MonoBehaviour
+public class GetTech9 : MonoBehaviour
 {
-    public Weapon pistol = new Weapon("pistol", 1, 10, 100, 12, 5, "Semi-Automatic", "9mm");
+    public Weapon pistol = new Weapon("tech-9", 1, 10, 100, 18, 10, "Fully-Automatic", "9mm");
 
     public bool PickUpEnabled;
+
+    void Start()
+    {
+
+    }
 
     void Update()
     {
@@ -20,7 +25,7 @@ public class GetPistol : MonoBehaviour
     {
        if (c2d.gameObject.name.Equals("Player"))
        {
-            Debug.Log("Found a Pistol!");
+            Debug.Log("Found a Tech-9!");
             PickUpEnabled = true;
        }
     }

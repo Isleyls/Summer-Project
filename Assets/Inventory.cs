@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     [SerializeField] public List<Item> items = new List<Item>();
+    [SerializeField] public List<Weapon> armory = new List<Weapon>();
+
 
     void Start()
     {
@@ -17,6 +19,14 @@ public class Inventory : MonoBehaviour
         else
         {
             instance = this;
+        }
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            World.WorldCreation.player.printInv();
         }
     }
 
@@ -41,6 +51,30 @@ public class Inventory : MonoBehaviour
             items.Add(item2add);
             Debug.Log(item2add.name + " was added.");
         }
-        World.WorldCreation.player.InventoryUpdate(items);
+        World.WorldCreation.player.InventoryUpdate(items, armory);
+    }
+
+    public void addWeapons(Weapon weapon2add)
+    {
+        bool weaponExists = false;
+
+        foreach (Weapon weapon in armory)
+        {
+            if (weapon.name == weapon2add.name)
+            {
+                weapon.count += weapon2add.count;
+                weaponExists = true;
+                Debug.Log(weapon2add.name + " was added. You now have " + weapon.count + " " + weapon2add.name + "s!");
+                break;
+            }
+        }
+
+        if (!weaponExists)
+        {
+            
+            armory.Add(weapon2add);
+            Debug.Log(weapon2add.name + " was added.");
+        }
+        World.WorldCreation.player.InventoryUpdate(items, armory);
     }
 }

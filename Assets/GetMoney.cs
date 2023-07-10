@@ -9,11 +9,6 @@ public class GetMoney : MonoBehaviour
 
     public bool PickUpEnabled;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (PickUpEnabled && Input.GetKeyDown(KeyCode.E))
